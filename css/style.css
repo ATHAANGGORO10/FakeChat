@@ -1,0 +1,30 @@
+:root {
+    --Color-default-1: #ffffff;
+}
+
+*,
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.btn-mode {
+    z-index: 9999;
+    padding: 7px 5px;
+    border-radius: 10%;
+    background-color: blueviolet;
+}
+
+.btn-mode:hover {
+    background-color: blue;
+}
+
+
+.header .container .brand-header {
+    font-size: 30px;
+    text-align: center;
+    font-family: Silkscreen;
+    color: var(--Color-default-1);
+}
