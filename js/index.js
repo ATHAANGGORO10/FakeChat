@@ -1,9 +1,7 @@
-const pertanyaan = document.getElementById("pertanyaan")
-const jawaban = document.getElementById("jawaban")
-const container = document.getElementsByClassName("container")
-
+const pertanyaan = document.getElementById("pertanyaan");
+const jawaban = document.getElementById("jawaban");
+const container = document.getElementsByClassName("container");
 let init = 0
-
 const botSay = (data) => {
     return [
         "Perkenalkan nama saya AizenChizuru, Nama kamu siapa?",
@@ -11,56 +9,53 @@ const botSay = (data) => {
         `Ohhh ${data?.usia}, hobi kamu apa ya?`,
         `wawww sama dong aku juga hobi ${data?.hobi}, btw punya pacar gak?`,
         `ohhh ${data?.pacar}, ya udah kalau gitu. udahan yah?`,
-    ]
-}
-
-pertanyaan.innerHTML = botSay()[0]
-
-let usersData = []
-
+    ];
+};
+pertanyaan.innerHTML = botSay()[0];
+let usersData = [];
 function botStart() {
     if (jawaban.value.length < 1) return alert("silahkan isi jawaban dulu")
     init++
     if (init === 1) {
-        botDelay({ nama: jawaban.value })
+        botDelay({ nama: jawaban.value });
     } else if (init === 2) {
-        botDelay({ usia: jawaban.value })
+        botDelay({ usia: jawaban.value });
     } else if (init === 3) {
-        botDelay({ hobi: jawaban.value })
+        botDelay({ hobi: jawaban.value });
     } else if (init === 4) {
-        botDelay({ maknan: jawaban.value })
+        botDelay({ maknan: jawaban.value });
     } else if (init === 5) {
-        botDelay({})
-        // finishing()
+        botDelay({});
+        finishing();
     } else {
-        botEnd()
+        botEnd();
     }
 }
-
 function botDelay(jawabanUser) {
-    // loaders.style.display = "block"
-    // container[0].style.filter = "blur(8px)"
     setTimeout(() => {
-        pertanyaan.innerHTML = botSay(jawabanUser)[init]
-        // loaders.style.display = "none"
-        // container[0].style.filter = "none"
-    }, [1000])
-    usersData.push(jawaban.value)
+        pertanyaan.innerHTML = botSay(jawabanUser)[init];
+    }, [1000]);
+    usersData.push(jawaban.value);
     jawaban.value = ""
 }
-
 function finishing() {
     pertanyaan.innerHTML = `Thank u ya ${usersData[0]} udah main ke deabot 😉, kali-kali kita main ${usersData[2]} bareng ya!`
     jawaban.value = "siap thanks juga!"
 }
-
 function botEnd() {
     alert(
         `Terimakasih ${usersData[0]} sudah berkunjung, anda akan diarahkan ke halaman utama.`
-    )
+    );
     window.location.reload()
-}
-
+};
+// function botStart() {
+//     swal({
+//         icon: 'error',
+//         title: 'Oops...',
+//         text: 'TOLONG ISI COLOM INPUT',
+//         button: true
+//     });
+// };
 
 (() => {
     'use strict'; // Button Mode Dark - Light Start
@@ -107,13 +102,6 @@ function botEnd() {
         setTheme(newTheme);
         updateDarkModeStatus();
         updateIcon();
-        updateHeader(newTheme);
-    };
-    const updateHeader = theme => {
-        const headerSection = document.querySelector('.header');
-        if (headerSection) {
-            headerSection.computedStyleMap.backgroundColor = theme === 'dark' ? '#343140' : 'beige';
-        }
     };
     const darkModeToggle = document.getElementById('darkModeToggle');
     if (darkModeToggle) {
@@ -125,10 +113,8 @@ function botEnd() {
             setTheme(getPreferredTheme());
             updateDarkModeStatus();
             updateIcon();
-            updateHeader(getPreferredTheme());
-        };
+        }
     });
     updateDarkModeStatus();
     updateIcon();
-    updateHeader(getPreferredTheme() || getPreferredTheme());
 })();
