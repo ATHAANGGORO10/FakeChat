@@ -1,20 +1,84 @@
-:root {
+:root, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --Font-default-4: poppins;
     --Color-default-3: #8a2be2;
     --Color-default-2: #6501c3;
 }
 
+button {
+    border: none;
+    background-color: lightseagreen;
+    font-size: 24px;
+    padding: 16px;
+    margin-left: 10px;
+    height: 65px;
+    color: #eaeaea;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #333333;
+    transition: 0.5s all ease-in-out;
+}
+
+input {
+    border: none;
+    background-color: #eaeaea;
+    color: #222222;
+    padding: 16px;
+    font-size: 24px;
+    margin-top: 10px;
+    max-width: 300px;
+}
+
 #pertanyaan {
-    background-color: var(--Color-default-3);
+    font-size: 1.6em;
+    font-weight: 500;
+}
+
+#loaders {
+    display: none;
+    width: 85px;
+    height: 85px;
+    position: absolute;
+    border-top: 15px solid lightseagreen;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    animation: 1s spin infinite linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
+/* Mode Dark/Light */
 .btn-mode {
     z-index: 9999;
-    padding: 7px 5px;
+    padding: 0px 5px;
     border-radius: 10%;
     background-color: var(--Color-default-3);
 }
 
 .btn-mode:hover {
     background-color: var(--Color-default-2);
+}
+/* Mode Dark/Light */
+
+
+
+.header .header-brand {
+    font-family: Pixelify Sans;
 }

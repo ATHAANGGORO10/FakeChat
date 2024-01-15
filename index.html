@@ -13,18 +13,41 @@
 </head>
 
 <body>
-    <div class="content-parent d-flex justify-content-center container-fluid mt-5 col-xxl-5 col-xl-6 col-lg-7">
-        <div class="content container">
-            <p id="pertanyaan" class="p-4 fs-6 text-center fw-bolder text-white rounded-2"></p>
-            <input id="jawaban" class="mb-3 p-3 rounded-2 form-control border-success border-3" type="text" placeholder="silahkan jawab">
-            <button class="rounded-2 btn btn-primary w-100 p-3" onclick="botStart()">SEND</button>
+    <!-- Header Start -->
+    <section class="header text-center bg-warning py-5 shadow">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="header-brand">FAKE BOT</h1>
+                <p class="lead text-muted">
+                    Something short and leading about the collection below—its contents,
+                    the creator,
+                    etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
+    <!-- Header End -->
+    <!-- Project Start -->
+    <section class="chat-box">
+        <div class="container">
+            <div class="wrapper">
+                <div class="content">
+                    <p id="pertanyaan"></p>
+                    <div class="row">
+                        <input id="jawaban" type="text" placeholder="silahkan jawab" />
+                        <button onclick="botStart()">SEND</button>
+                    </div>
+                </div>
+            </div>
+            <div id="loaders"></div>
+        </div>
+    </section>
+    <!-- Project End -->
 
     <!-- Mode Dark/Light -->
     <div class="btn-mode position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle shadow">
         <button class="btn d-flex align-items-center border-0" type="button" id="darkModeToggle">
-            <i id="darkModeIcon" class="bi-cloud-sun-fill text-white"></i>
+            <i id="darkModeIcon" class="bi-cloud-sun-fill fs-5 text-white"></i>
         </button>
     </div>
     <!-- Mode Dark/Light -->
