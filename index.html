@@ -13,33 +13,18 @@
 </head>
 
 <body>
-    <!-- Header Start -->
-    <section class="header text-center bg-warning py-5 shadow">
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="header-brand">FAKE BOT</h1>
-                <p class="lead text-muted">
-                    Something short and leading about the collection below—its contents,
-                    the creator,
-                    etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.
-                </p>
-            </div>
-        </div>
-    </section>
-    <!-- Header End -->
     <!-- Project Start -->
     <section class="chat-box">
-        <div class="container">
-            <div class="wrapper">
+        <div class="container row">
+            <div class="wrapper d-flex">
                 <div class="content">
                     <p id="pertanyaan"></p>
-                    <div class="row">
-                        <input id="jawaban" type="text" placeholder="silahkan jawab" />
-                        <button onclick="botStart()">SEND</button>
+                    <div class="row justify-content-center"> 
+                        <input id="jawaban" type="text" class="form-control" placeholder="Silahkan jawab" />
+                        <button onclick="botStart()" class="btn btn-primary">SEND</button>
                     </div>
                 </div>
             </div>
-            <div id="loaders"></div>
         </div>
     </section>
     <!-- Project End -->
