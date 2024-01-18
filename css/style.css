@@ -1,21 +1,105 @@
-:root, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    --Font-default-4: poppins;
+:root {
+    --Color-default-4: #777777;
     --Color-default-3: #8a2be2;
     --Color-default-2: #6501c3;
+    --Color-default-1: #dcf8c6;
 }
+
+/* From Chat Iteraktif */
+#output {
+    margin-top: 5px;
+    margin-bottom: -1px;
+    font-family: sans-serif;
+}
+
+
+.chat-bubble {
+    max-width: 100%;
+    position: relative;
+    padding: 15px 15px;
+    border-radius: 10px 10px 0px 10px;
+    background-color: var(--Color-default-1);
+}
+
+.chat-bubble {
+    align-self: flex-end;
+    background-color: var(--Color-default-1);
+}
+
+.chat-bubble::after {
+    content: '';
+    right: -0px;
+    bottom: -9px;
+    position: absolute;
+    border-style: solid;
+    border-width: 0 25px 20px 0;
+    border-color: transparent var(--Color-default-1) transparent transparent;
+}
+
+.time {
+    font-size: 12px;
+    color: var(--Color-default-4);
+}
+
+@media (min-width: 768px) {
+    .chat-box {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 992px) {
+    .chat-box {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1200px) {
+    .chat-box {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1400px) {
+    .chat-box {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* From Chat Iteraktif */
+
+/* Button Send */
+.button {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--Color-default-3);
+}
+
+.button:hover {
+    background-color: var(--Color-default-2);
+}
+
+/* Button Send */
 
 /* Mode Dark/Light */
 .btn-mode {
-    z-index: 9999;
-    padding: 0px 5px;
-    border-radius: 10%;
+    border-radius: 5px;
     background-color: var(--Color-default-3);
 }
 
 .btn-mode:hover {
     background-color: var(--Color-default-2);
 }
+
 /* Mode Dark/Light */

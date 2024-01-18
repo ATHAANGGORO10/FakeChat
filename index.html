@@ -15,30 +15,32 @@
 <body>
     <!-- Project Start -->
     <section class="chat-box">
-        <div class="container row">
-            <div class="wrapper d-flex">
-                <div class="content">
-                    <p id="pertanyaan"></p>
-                    <div class="row justify-content-center"> 
-                        <input id="jawaban" type="text" class="form-control" placeholder="Silahkan jawab" />
-                        <button onclick="botStart()" class="btn btn-primary">SEND</button>
-                    </div>
-                </div>
+        <div class="container p-5 bg-white col-xxl-6 col-xl-7 col-lg-8">
+            <div class="chat-bubble">
+                <p id="output" class="text-black"></p>
+                <span class="time" id="time"></span>
             </div>
+            <p class="alert-inf pt-4 text-black">TOLONG BERIKAN JAWABAN ANDA DI BAWAH INI 😊😊</p>
+            <input id="input" type="text" class="form-control p-3 border-success text-black bg-light" required
+                minlength="30" maxlength="50">
+            <button onclick="botStart()" class="button w-100 mt-3 p-3 text-white fw-bolder">SEND</button>
+            <button class="btn-mode mt-3 w-100 p-3 border-0 shadow" type="button" id="darkModeToggle">
+                <i id="darkModeIcon" class="bi-cloud-sun-fill text-white"></i>
+            </button>
         </div>
     </section>
     <!-- Project End -->
 
-    <!-- Mode Dark/Light -->
-    <div class="btn-mode position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle shadow">
-        <button class="btn d-flex align-items-center border-0" type="button" id="darkModeToggle">
-            <i id="darkModeIcon" class="bi-cloud-sun-fill fs-5 text-white"></i>
-        </button>
-    </div>
-    <!-- Mode Dark/Light -->
+    <!-- Footer Start -->
+    <footer class="text-center py-5">
+        <div class="container">
+            <p>&copy; <a href="https://ATHAANGGORO10" style="text-decoration: none;">ATHA ANGGORO ARYAGUNA</a> Project Tranning Mechine Mengelola Data</p>
+        </div>
+    </footer>
+    <!-- Footer End -->
 
+    <!-- CDN Javascript -->
     <script src="js/index.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

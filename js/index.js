@@ -1,144 +1,54 @@
-const pertanyaan = document.getElementById("pertanyaan")
-const jawaban = document.getElementById("jawaban")
-const container = document.getElementsByClassName("container")
-
-let init = 0
-
-const botSay = (data) => {
-    return [
-        "Perkenalkan nama saya deabot. siapa nama kamu?",
-        `Halo ${data?.nama}, berapa usia kamu?`,
-        `Ohhh ${data?.usia}, hobi kamu apa ya?`,
-        `wawww sama dong aku juga hobi ${data?.hobi}, btw punya pacar gak?`,
-        `ohhh ${data?.pacar}, ya udah kalau gitu. udahan yah?`,
-    ]
-}
-
-pertanyaan.innerHTML = botSay()[0]
-
-let usersData = []
-
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+const container = document.querySelector(".container");
+let init = 0;
+const usersData = [];
+const botSay = (data) => [ // Ketika anda ingin membuat atau menambahkan karangan dialog, anda dapat merubah dan menambahkan pada bagian ini.
+    // "#",
+    // `Ohh ${data?.nama}, #`,
+    // `Ohh ${data?.nama}, #`,
+    // `Ohh ${data?.usia}, #`,
+    // `Ohh ${data?.hobi}, #`,
+    // `Baiklah, ${data?.pacar}. #`,
+];
+output.innerHTML = botSay({})[0];
 function botStart() {
-    if (jawaban.value.length < 1) return alert("silahkan isi jawaban dulu")
-    init++
-    if (init === 1) {
-        botDelay({ nama: jawaban.value })
-    } else if (init === 2) {
-        botDelay({ usia: jawaban.value })
-    } else if (init === 3) {
-        botDelay({ hobi: jawaban.value })
-    } else if (init === 4) {
-        botDelay({ pacar: jawaban.value })
-    } else if (init === 5) {
-        finishing()
-    } else {
-        botEnd()
-    }
-    function botDelay(jawabanUser) {
+    if (input.value.length < 1) return alert("Silahkan isi jawaban dulu.");
+    init++;
+    const inputUser = { // Dan jangan lupa ketika anda sudah membuat dialog baru beri property 
+        // s
+    };
+    if (init < 5) {
         setTimeout(() => {
-            pertanyaan.innerHTML = botSay(jawabanUser)[init]
-            container[0].style.filter = "none"
-        }, [1000])
-        usersData.push(jawaban.value)
-        jawaban.value = ""
-    }
-    
-    function finishing() {
-        pertanyaan.innerHTML = `Thank u ya ${usersData[0]} udah main ke deabot 😉, kali-kali kita main ${usersData[2]} bareng ya!`
-        jawaban.value = "siap thanks juga!"
-    }
-    
-    function botEnd() {
+            output.innerHTML = botSay(inputUser)[init];
+        }, 1000);
+        usersData.push(input.value);
+        input.value = "";
+    } else if (init === 5) {
+        output.innerHTML = `Terima kasih ${usersData[0]} sudah bermain dengan deabot! Sampai jumpa lain waktu.`;
+        input.value = "";
+    } else {
         alert(
-            `Terimakasih ${usersData[0]} sudah berkunjung, anda akan diarahkan ke halaman utama.`
-        )
-        window.location.reload()
+            `Terima kasih ${usersData[0]} sudah berkunjung, anda akan diarahkan ke halaman utama.`
+        );
+        window.location.reload();
     }
-    (() => {
-        'use strict'; // Button Mode Dark - Light Start
-        const getStoredTheme = () => localStorage.getItem('theme');
-        const setStoredTheme = theme => localStorage.setItem('theme', theme);
-        const getPreferredTheme = () => {
-            const storedTheme = getStoredTheme();
-            if (storedTheme) {
-                return storedTheme;
-            }
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        };
-        const setTheme = theme => {
-            if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.documentElement.setAttribute('data-bs-theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-bs-theme', theme);
-            }
-        };
-        setTheme(getPreferredTheme());
-        const updateDarkModeStatus = () => {
-            const darkModeStatus = document.getElementById('darkModeStatus');
-            if (darkModeStatus) {
-                const currentTheme = getStoredTheme() || getPreferredTheme();
-                darkModeStatus.textContent = ` (${currentTheme === 'dark' ? 'Dark' : 'Light'} Mode)`;
-            }
-        }; // Button Mode Dark - Light End
-        const updateIcon = () => { // Button Icons Click Start
-            const currentTheme = getStoredTheme() || getPreferredTheme();
-            const icon = document.getElementById('darkModeIcon');
-            if (icon) {
-                icon.classList.remove('bi-moon-stars-fill');
-                if (currentTheme === 'dark') {
-                    icon.classList.add('bi-moon-stars-fill', 'text-light');
-                } else {
-                    icon.classList.add('bi-cloud-sun-fill', 'text-dark');
-                }
-            }
-        };
-        const toggleTheme = () => {
-            const currentTheme = getStoredTheme() || getPreferredTheme();
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setStoredTheme(newTheme);
-            setTheme(newTheme);
-            updateDarkModeStatus();
-            updateIcon();
-        };
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        if (darkModeToggle) {
-            darkModeToggle.addEventListener('click', toggleTheme);
-        }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-            const storedTheme = getStoredTheme();
-            if (storedTheme !== 'light' && storedTheme !== 'dark') {
-                setTheme(getPreferredTheme());
-                updateDarkModeStatus();
-                updateIcon();
-            }
-        });
-        updateDarkModeStatus();
-        updateIcon();
-    })();
 }
-
-function botDelay(jawabanUser) {
-    setTimeout(() => {
-        pertanyaan.innerHTML = botSay(jawabanUser)[init]
-        container[0].style.filter = "none"
-    }, [1000])
-    usersData.push(jawaban.value)
-    jawaban.value = ""
+function updateTime() {
+    const timeElement = document.getElementById('time');
+    const currentTime = new Date();
+    const hours = currentTime.getHours();
+    const minutes = currentTime.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    const formattedTime = `${formattedHours}:${formattedMinutes} ${ampm}`;
+    timeElement.textContent = formattedTime;
 }
-
-function finishing() {
-    pertanyaan.innerHTML = `Thank u ya ${usersData[0]} udah main ke deabot 😉, kali-kali kita main ${usersData[2]} bareng ya!`
-    jawaban.value = "siap thanks juga!"
-}
-
-function botEnd() {
-    alert(
-        `Terimakasih ${usersData[0]} sudah berkunjung, anda akan diarahkan ke halaman utama.`
-    )
-    window.location.reload()
-}
+updateTime();
+setInterval(updateTime, 1000);
 (() => {
-    'use strict'; // Button Mode Dark - Light Start
+    'use strict';
     const getStoredTheme = () => localStorage.getItem('theme');
     const setStoredTheme = theme => localStorage.setItem('theme', theme);
     const getPreferredTheme = () => {
@@ -162,8 +72,8 @@ function botEnd() {
             const currentTheme = getStoredTheme() || getPreferredTheme();
             darkModeStatus.textContent = ` (${currentTheme === 'dark' ? 'Dark' : 'Light'} Mode)`;
         }
-    }; // Button Mode Dark - Light End
-    const updateIcon = () => { // Button Icons Click Start
+    };
+    const updateIcon = () => {
         const currentTheme = getStoredTheme() || getPreferredTheme();
         const icon = document.getElementById('darkModeIcon');
         if (icon) {
